@@ -1,8 +1,10 @@
 import React from 'react';
+import {BrowserRouter, Route, Link} from 'react-router-dom';
 import SignUp from './SignUp';
 
 const NavBar = () => {
     return (
+        <BrowserRouter>
         <div className="ui menu"> 
             <a className="item">My Profile</a>
             <a className="item">Stores</a>
@@ -14,10 +16,13 @@ const NavBar = () => {
                     <div className="ui button input">Log Out</div>
                 </div>
                 <div className="item">
-                    <div className="ui button input" >Sign Up</div>
+                    <div className="ui button input" ><Link to="/signup">Sign Up </Link>
+                    </div>
                 </div>
             </div>
         </div>
+        <Route path="/signup" component={SignUp} />
+        </BrowserRouter>
     )
 }
 
