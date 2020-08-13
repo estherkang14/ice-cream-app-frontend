@@ -12,6 +12,7 @@ const SignUp = () => {
                     <label>Password</label>
                     <input placeholder="Password" name="password" />
                 </div>
+                <button type="submit" className="ui button">Submit</button> 
             </form>
         </div>
     )

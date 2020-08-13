@@ -1,4 +1,5 @@
 import React from 'react';
+import SignUp from './SignUp';
 
 const NavBar = () => {
     return (
@@ -13,7 +14,7 @@ const NavBar = () => {
                     <div className="ui button input">Log Out</div>
                 </div>
                 <div className="item">
-                    <div className="ui button input">Sign Up</div>
+                    <div className="ui button input" >Sign Up</div>
                 </div>
             </div>
         </div>
