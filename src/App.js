@@ -9,13 +9,31 @@ let BASEURL = "http://localhost:3000/"
 let STORESURL = BASEURL + "stores"
 class App extends React.Component {
   state = {
-    stores: []
+    stores: [],
+    search: ""
   }
 
   componentDidMount() {
     fetch(STORESURL)
     .then(response => response.json())
-    .then(stores => this.setState({ stores }))
+    .then(stores => this.setState({ stores}))
+  }
+
+  updateSearch = (e) => {
+    let newSearch = e.target.value
+    this.setState({
+      search: newSearch
+    })
+  }
+
+  displayStores = () => {
+    let stores = this.state.stores 
+    let search = this.state.search
+    if (stores.length > 0 && search !== "") {
+      return stores.filter(store => store.name.toLowerCase().includes(search.toLowerCase()))
+    } else {
+      return stores
+    }
   }
 
   render() { 
@@ -25,8 +43,9 @@ class App extends React.Component {
           <NavBar />
           <div className="container">
             <Switch>
-              <Route path="/signup" render={(routeProps) => <SignUp {...routeProps} /> } />
-              <Route path="/" render={(routeProps) => <StoresContainer stores={this.state.stores} {...routeProps} /> } />
+              <Route path="/signup" render={(routeProps) => <SignUp  {...routeProps} /> } />
+              <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 
+              updateSearch={this.updateSearch} {...routeProps} /> } />
             </Switch>
           </div>
         </div>
