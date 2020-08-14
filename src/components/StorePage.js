@@ -1,5 +1,6 @@
 import React from 'react'
 import { withRouter } from 'react-router-dom'
+import ReviewForm from './ReviewForm'
 
 
 class StorePage extends React.Component {
@@ -56,6 +57,7 @@ class StorePage extends React.Component {
                 <div>
                     <h4>Reviews</h4>
                     {this.renderReviews()}
+                    <ReviewForm />
                 </div>
             </div>
         )
