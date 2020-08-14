@@ -1,13 +1,17 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
+
 
 class StorePage extends React.Component {
-
-    state = {}
+    state = {
+        store: {}
+    }
 
     componentDidMount() {
-        fetch('http://localhost:3000/stores/' + this.props.store.id)
-        .then(response => response.json)
-        .then(store = this.setState({store}))
+        const id = this.props.match.params.id
+        fetch('http://localhost:3000/stores/' + id)
+        .then(response => response.json())
+        .then(store => this.setState({store}))
     }
 
     render() {
@@ -19,4 +23,4 @@ class StorePage extends React.Component {
     }
 }
 
-export default StorePage
+export default withRouter(StorePage)

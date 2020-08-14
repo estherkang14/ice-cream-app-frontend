@@ -3,6 +3,7 @@ import './App.css';
 import StoresContainer from './containers/StoresContainer';
 import NavBar from './components/NavBar';
 import SignUp from './components/SignUp';
+import StorePage from './components/StorePage';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 let BASEURL = "http://localhost:3000/"
@@ -44,6 +45,7 @@ class App extends React.Component {
           <div className="container">
             <Switch>
               <Route path="/signup" render={(routeProps) => <SignUp  {...routeProps} /> } />
+              <Route path="/store/:id" render={(routeProps) => <StorePage {...routeProps} />} />
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 
               updateSearch={this.updateSearch} {...routeProps} /> } />
             </Switch>
