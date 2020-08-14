@@ -1,5 +1,4 @@
 import React from 'react';
-import {BrowserRouter, Route, Link, Switch} from 'react-router-dom';
 
 const NavBar = () => {
     return (
@@ -8,14 +7,13 @@ const NavBar = () => {
             <a className="item" href="/">Stores</a>
             <div className="right menu">
                 <div className="item">
-                    <div className="ui button input">Log In</div>
+                    <div className="ui button input"><a href="/login">Log In</a></div>
                 </div>
                 <div className="item">
                     <div className="ui button input">Log Out</div>
                 </div>
                 <div className="item">
-                    <div className="ui button input" ><a href="/signup">Sign Up</a>
-                    </div>
+                    <div className="ui button input" ><a href="/signup">Sign Up</a></div>
                 </div>
             </div>
         </div>
