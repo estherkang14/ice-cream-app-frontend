@@ -22,6 +22,16 @@ const ReviewForm = () => {
                         <option value="5">5</option>
                     </select>
                 </div>
+                <div className="ui fluid segment">
+                    <label> Add a Photo: </label> <br></br>
+                    <input type="file" className="inputfile ui button" id="embedpollfileinput"/>
+                    <label for="embedpollfileinput" className="ui button">
+                        <i className="ui upload icon"/>
+                        Upload Image
+                    </label>
+                   
+                </div>
+                <button type="submit" className="ui button">Submit</button>
             </div>
         </div>
     )
