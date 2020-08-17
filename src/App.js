@@ -3,6 +3,7 @@ import './App.css';
 import StoresContainer from './containers/StoresContainer';
 import NavBar from './components/NavBar';
 import SignUp from './components/SignUp';
+import Login from './components/LogIn';
 import StorePage from './components/StorePage';
 import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
@@ -91,6 +92,7 @@ class App extends React.Component {
           <NavBar />
           <div className="container">
             <Switch>
+              <Route path="/login" render={(routeProps) => <Login {...routeProps} /> } />
               <Route path="/signup" render={(routeProps) => <SignUp  {...routeProps} /> } />
               <Route path="/store/:id" render={(routeProps) => <StorePage reviewText={this.reviewText}
               reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} {...routeProps} />} />
