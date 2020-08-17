@@ -3,6 +3,7 @@ import { withRouter } from 'react-router-dom'
 import ReviewForm from './ReviewForm'
 
 let REVIEWSURL = 'http://localhost:3000/reviews'
+let FAVORITESTOREURL = 'http://localhost:3000/favoritestres'
 
 class StorePage extends React.Component {
     state = {
@@ -92,13 +93,37 @@ class StorePage extends React.Component {
           })
 
           e.target.reset()
-      }
+    }
+
+    addToFavoriteStore = () => {
+        let userId = localStorage.userId
+        let storeId = this.state.store.id
+
+        let options = {
+            method: 'POST',
+            headers: {
+                'accept': 'application/json',
+                'content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                user_id: userId,
+                store_id: storeId
+            })
+        }
+
+        fetch(FAVORITESTOREURL, options)
+    }
 
     render() {
         return (
             <div className="ui left aligned container">
                 <h1>{this.state.store.name}</h1>
                 <h3>{this.state.store.location}</h3>
+                {
+                    (localStorage.token) 
+                    ? <button className="ui button" tabindex="0" onClick={this.addToFavoriteStore}>Add to favorite store!</button>
+                    : null
+                }
                 <div>
                     <h4>Ice Cream Flavors: </h4>
                     <ul>
