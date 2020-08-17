@@ -77,7 +77,7 @@ class App extends React.Component {
   postReview = (e, storeId) => {
     e.preventDefault()
    
-      let reviewData = {...this.state.reviewData, user_id: localStorage.userId, store_id: storeId}
+      let reviewData = {...this.state.reviewForm, user_id: localStorage.userId, store_id: storeId}
       let options = {
         method: "POST", 
         headers: {
