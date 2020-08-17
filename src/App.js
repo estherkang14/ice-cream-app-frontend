@@ -2,6 +2,7 @@ import React from 'react';
 import './App.css';
 import StoresContainer from './containers/StoresContainer';
 import NavBar from './components/NavBar';
+import NavBar2 from './components/NavBar2';
 import SignUp from './components/SignUp';
 import Login from './components/LogIn';
 import StorePage from './components/StorePage';
@@ -130,16 +131,25 @@ class App extends React.Component {
     .catch(error => alert(error))
   }
 
+  logOut = () => {
+    this.setState({
+      username: "",
+      password: "",
+      location: "",
+      loggedIn: false
+    })
+    localStorage.clear()
+  }
+
 
   render() { 
     return (
 
       <BrowserRouter>
         <div className="App">
-          <NavBar />
+        { (this.state.loggedIn) ? <NavBar2 logOut={this.logOut}/> : <NavBar/> }
           <div className="container">
             <Switch>
-              {/* Add ternary to check if this.state.loggedIn is true */}
               <Route path="/login" render={(routeProps) => (this.state.loggedIn) ? <Redirect to="/" /> : 
               <Login {...routeProps} />} />
               <Route path="/signup" render={(routeProps) => (this.state.loggedIn) ? <Redirect to="/" /> :
