@@ -18,11 +18,11 @@ class App extends React.Component {
   state = {
     stores: [],
     search: "",
-    reviewData: { 
-      text: "",
-      rating: "", 
-      photo: ""
-    }, 
+    // reviewData: { 
+    //   text: "",
+    //   rating: "", 
+    //   photo: ""
+    // }, 
     username: "",
     password: "",
     location: "",
@@ -55,25 +55,25 @@ class App extends React.Component {
     }
   }
 
-  reviewText = (e) => {
-    let reviewData = {...this.state.reviewData, text: e.target.value}
-    this.setState({
-      reviewData
-    })
-  }
+  // reviewText = (e) => {
+  //   let reviewData = {...this.state.reviewData, text: e.target.value}
+  //   this.setState({
+  //     reviewData
+  //   })
+  // }
 
-  reviewRating = (e) => {
-    let reviewData = {...this.state.reviewData, rating: e.target.value}
-    this.setState({
-      reviewData
-    })
-  }
+  // reviewRating = (e) => {
+  //   let reviewData = {...this.state.reviewData, rating: e.target.value}
+  //   this.setState({
+  //     reviewData
+  //   })
+  // }
 
-  reviewPhoto = (e) => {
+  // reviewPhoto = (e) => {
+
+  //   let reviewData = {...this.state.reviewData, photo: e.target.value}
     
-    let reviewData = {...this.state.reviewData, photo: e.target.value}
-    
-  }
+  // }
 
   // postReview = (e, storeId) => {
   //   e.preventDefault()

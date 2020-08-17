@@ -6,7 +6,12 @@ let REVIEWSURL = 'http://localhost:3000/reviews'
 
 class StorePage extends React.Component {
     state = {
-        store: {}
+        store: {},
+        reviewData: { 
+            text: "",
+            rating: "", 
+            photo: ""
+        }
     }
 
    
@@ -46,10 +51,30 @@ class StorePage extends React.Component {
         }
     }
 
+    reviewText = (e) => {
+        let reviewData = {...this.state.reviewData, text: e.target.value}
+        this.setState({
+          reviewData
+        })
+      }
+    
+      reviewRating = (e) => {
+        let reviewData = {...this.state.reviewData, rating: e.target.value}
+        this.setState({
+          reviewData
+        })
+      }
+    
+      reviewPhoto = (e) => {
+        
+        let reviewData = {...this.state.reviewData, photo: e.target.value}
+        // FIX THIS !
+      }
+
     postReview = (e) => {
         e.preventDefault()
        
-          let reviewData = {...this.props.reviewData, user_id: localStorage.userId, store_id: this.state.store.id}
+          let reviewData = {...this.state.reviewData, user_id: localStorage.userId, store_id: this.state.store.id}
           let options = {
             method: "POST", 
             headers: {
@@ -62,6 +87,8 @@ class StorePage extends React.Component {
           fetch(REVIEWSURL, options)
           .then(response => response.json())
           .then(console.log("Review Added"))
+
+          e.target.reset()
       }
 
     render() {
@@ -80,8 +107,10 @@ class StorePage extends React.Component {
                     {this.renderReviews()}
                     
                     { localStorage.token ? 
-                        <ReviewForm reviewText={this.props.reviewText} reviewRating={this.props.reviewRating}
-                        reviewPhoto={this.props.reviewPhoto} postReview={this.postReview} store={this.state.store}/>
+                        <ReviewForm 
+                        reviewText={this.reviewText} reviewRating={this.reviewRating}
+                        reviewPhoto={this.reviewPhoto} 
+                        postReview={this.postReview} store={this.state.store}/>
                     : null }
                 </div>
             </div>
