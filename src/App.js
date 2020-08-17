@@ -17,6 +17,7 @@ let LOGINURL = BASEURL + 'login'
 class App extends React.Component {
   state = {
     stores: [],
+    filteredStores: [],
     search: "",
     // reviewData: { 
     //   text: "",
@@ -32,7 +33,7 @@ class App extends React.Component {
   componentDidMount() {
     fetch(STORESURL)
     .then(response => response.json())
-    .then(stores => this.setState({ stores }))
+    .then(stores => this.setState({ stores, filteredStores: stores }))
     if (localStorage.token) {
       this.setState({loggedIn: true})
     }
@@ -46,7 +47,7 @@ class App extends React.Component {
   }
 
   displayStores = () => {
-    let stores = this.state.stores 
+    let stores = this.state.filteredStores 
     let search = this.state.search
     if (stores.length > 0 && search !== "") {
       return stores.filter(store => store.name.toLowerCase().includes(search.toLowerCase()))
@@ -55,43 +56,22 @@ class App extends React.Component {
     }
   }
 
-  // reviewText = (e) => {
-  //   let reviewData = {...this.state.reviewData, text: e.target.value}
-  //   this.setState({
-  //     reviewData
-  //   })
-  // }
-
-  // reviewRating = (e) => {
-  //   let reviewData = {...this.state.reviewData, rating: e.target.value}
-  //   this.setState({
-  //     reviewData
-  //   })
-  // }
-
-  // reviewPhoto = (e) => {
-
-  //   let reviewData = {...this.state.reviewData, photo: e.target.value}
-    
-  // }
-
-  // postReview = (e, storeId) => {
-  //   e.preventDefault()
-   
-  //     let reviewData = {...this.state.reviewData, user_id: localStorage.userId, store_id: storeId}
-  //     let options = {
-  //       method: "POST", 
-  //       headers: {
-  //         "Content-Type": "application/json",
-  //         accept: "application/json"
-  //       },
-  //       body: JSON.stringify({ reviewData })
-  //     }
-
-  //     fetch(REVIEWSURL, options)
-  //     .then(response => response.json())
-  //     .then(console.log("Review Added"))
-  // }
+  filterStores = (e) => {
+    let filteredStores = this.state.stores 
+    if (e.target.value === "None") {
+      this.setState({ filteredStores })
+    } else if (e.target.value === "Highest Rated") {
+      this.setState({ filteredStores: filteredStores.sort( (store1, store2) => store2.avg_rating - store1.avg_rating)})
+    } else if (e.target.value === "Alphabetically") {
+      this.setState({ filteredStores: filteredStores.sort( (store1, store2) => store1.name.localeCompare(store2.name))})
+    } else if (e.target.value === "Most Flavors") {
+      this.setState({ filteredStores: filteredStores.sort( (store1, store2) => store2.ice_cream_count - store1.ice_cream_count)})
+    } else if (e.target.value === "Washington, DC") {
+      this.setState({ filteredStores: filteredStores.filter( store => store.location === "Washington, DC")})
+    } else if (e.target.value === "Baltimore, MD") {
+      this.setState({ filteredStores: filteredStores.filter( store => store.location === "Baltimore, MD")})
+    }
+  }
 
   setUsername= (e) => {
     this.setState({
@@ -186,6 +166,8 @@ class App extends React.Component {
       )
     }
   }
+
+
  
 
 
@@ -213,7 +195,7 @@ class App extends React.Component {
               />} />
 
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 
-              updateSearch={this.updateSearch} {...routeProps} /> } />
+              updateSearch={this.updateSearch} filterStores={this.filterStores}{...routeProps} /> } />
             </Switch>
           </div>
         </div>

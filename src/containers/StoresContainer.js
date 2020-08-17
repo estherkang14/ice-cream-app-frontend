@@ -5,7 +5,8 @@ import FilterBar from '../components/FilterBar'
 const StoresContainer = (props) => {
     return (
         <div className="container">
-            <FilterBar updateSearch={props.updateSearch}/>
+            <FilterBar updateSearch={props.updateSearch} filterStores={props.filterStores}/>
+            <br></br>
             <div className="ui centered cards">
                 {props.stores.map(store => <Store store={store} key={store.id} />)}
             </div>

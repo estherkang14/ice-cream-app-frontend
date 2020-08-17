@@ -12,23 +12,26 @@ const FilterBar = props => {
 
 
             <label>
-                Filter Search By:
-                <select className="ui selection dropdown"> 
-                    <option value="All">All</option>
+                
+                <select className="ui selection dropdown" onChange={(e) => props.filterStores(e)}> 
+                    <option>Filter Search:</option>
+                    <option value="None">No filter</option>
                     <option value="Highest Rated">Highest Rated</option>
-                    <option value="Most Reviews">Most Reviews</option>
-                    <option>By Location</option>
-                    <option value="Washington, D.C.">Washington D.C.</option>
+                    <option value="Alphabetically">Alphabetically</option>
+                    <option value="Most Flavors">Most Flavors Offered</option>
+                    <option>BY LOCATION</option>
+                    <option value="Washington, DC">Washington DC</option>
+                    <option value="Baltimore, MD">Baltimore, MD</option>
                     
                 </select>
             </label>
 
-            <div role="listbox" aria-expanded="false" className="ui selection dropdown" tabIndex="0">
+            {/* <div role="listbox" aria-expanded="false" className="ui selection dropdown" tabIndex="0">
                     <div aria-atomic="true" aria-live="polite" role="alert" className="divider default text">Filter Search By:</div>
                     <i area-hidden="true" className="dropdown icon" />
                     
                     
-            </div>
+            </div> */}
         </div>
     )
 }
