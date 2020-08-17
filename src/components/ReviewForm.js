@@ -33,7 +33,8 @@ const ReviewForm = (props) => {
                     </label>
                    
                 </div>
-                <button type="submit" className="ui button">Submit</button>
+                <button type="submit" className="ui button" onClick={(e) => props.postReview(e, props.store)}>
+                    Submit</button>
             </div>
         </div>
     )

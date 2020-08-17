@@ -57,8 +57,9 @@ class StorePage extends React.Component {
                 <div>
                     <h4>Reviews</h4>
                     {this.renderReviews()}
+                    
                     <ReviewForm reviewText={this.props.reviewText} reviewRating={this.props.reviewRating}
-                    reviewPhoto={this.props.reviewPhoto}/>
+                    reviewPhoto={this.props.reviewPhoto} postReview={this.props.postReview} store={this.state.store}/>
                 </div>
             </div>
         )

@@ -90,6 +90,25 @@ class App extends React.Component {
     console.log(reviewForm)
   }
 
+  postReview = (e, store) => {
+    e.preventDefault()
+    console.log(store.id)
+      // Using Logged In User + Store 
+      // let reviewData = {...this.state.reviewData, user_id: user.id, store_id: store.id}
+      // let options = {
+      //   method: "POST", 
+      //   headers: {
+      //     "Content-Type": "application/json",
+      //     accept: "application/json"
+      //   },
+      //   body: JSON.stringify({ reviewData })
+      // }
+
+      // fetch(REVIEWSURL, options)
+      // .then(response => response.json())
+      // .then(console.log("Review Added"))
+  }
+
   setUsername= (e) => {
     this.setState({
       username: e.target.value
@@ -141,6 +160,8 @@ class App extends React.Component {
     localStorage.clear()
   }
 
+ 
+
 
   render() { 
     return (
@@ -157,7 +178,8 @@ class App extends React.Component {
               setPassword={this.setPassword} setLocation={this.setLocation} signUp={this.signUp}
               {...routeProps} /> } />
               <Route path="/store/:id" render={(routeProps) => <StorePage reviewText={this.reviewText}
-              reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} {...routeProps} />} />
+              reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} postReview={this.postReview}
+              {...routeProps} />} />
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 
               updateSearch={this.updateSearch} {...routeProps} /> } />
             </Switch>
