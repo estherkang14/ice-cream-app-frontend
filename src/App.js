@@ -32,7 +32,8 @@ class App extends React.Component {
   componentDidMount() {
     fetch(STORESURL)
     .then(response => response.json())
-    .then(stores => this.setState({ stores}))
+    .then(stores => this.setState({ stores }))
+    console.log(localStorage)
   }
 
   updateSearch = (e) => {
@@ -174,13 +175,16 @@ class App extends React.Component {
     fetch(LOGINURL, options)
     .then(response => response.json())
     .then(data => {
-      debugger
+      // debugger
       localStorage.setItem("token", data.token)
-      this.setState({loggedIn: true, userId: data.user.id})
+      localStorage.setItem("userId", data.user.id)
+      this.setState({loggedIn: true})
+      // this.setState({loggedIn: true, userId: data.user.id})
     })
   }
 
-  logOut = () => {
+  logOut = (e) => {
+    e.preventDefault()
     this.setState({
       username: "",
       password: "",

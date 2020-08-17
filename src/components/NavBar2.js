@@ -9,7 +9,7 @@ const NavBar2 = (props) => {
            
                
                 <div className="item">
-                    <div className="ui button input" onClick={() => {props.logOut()}}>Log Out</div>
+                    <div className="ui button input" onClick={(e) => {props.logOut(e)}}>Log Out</div>
                 </div> 
               
             </div>
