@@ -206,9 +206,11 @@ class App extends React.Component {
               setPassword={this.setPassword} setLocation={this.setLocation} signUp={this.signUp}
               {...routeProps} /> } />
 
-              <Route path="/store/:id" render={(routeProps) => <StorePage reviewText={this.reviewText}
-              reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} 
-              {...routeProps} reviewData={this.state.reviewData} />} />
+              <Route path="/store/:id" render={(routeProps) => <StorePage 
+              // reviewText={this.reviewText}
+              // reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} 
+              // {...routeProps} reviewData={this.state.reviewData} 
+              />} />
 
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 
               updateSearch={this.updateSearch} {...routeProps} /> } />
