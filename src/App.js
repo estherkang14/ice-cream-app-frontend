@@ -8,6 +8,8 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 let BASEURL = "http://localhost:3000/"
 let STORESURL = BASEURL + "stores"
+let REVIEWSURL = BASEURL + "reviews"
+
 class App extends React.Component {
   state = {
     stores: [],
@@ -25,6 +27,27 @@ class App extends React.Component {
     this.setState({
       search: newSearch
     })
+  }
+
+  addNewReview = (userId, storeId, text, rating, photo) => {
+    const options = {
+      method: "POST",
+      headers: {
+        accept: "application/json",
+        "content-type": "application/json"
+      },
+      body: JSON.stringify({
+        user_id: userId,
+        store_id: storeId,
+        text,
+        rating,
+        photo
+      })
+    }
+    
+    fetch(REVIEWSURL, options)
+    .then(response => response.json())
+    .then(reviewData => console.log(reviewData))
   }
 
   displayStores = () => {
