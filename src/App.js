@@ -172,7 +172,7 @@ class App extends React.Component {
     .then(response => response.json())
     .then(data => {
       localStorage.token = data.token
-      this.state({loggedIn: true, userId: data.user.id})
+      this.setState({loggedIn: true, userId: data.user.id})
     })
   }
 
@@ -181,9 +181,10 @@ class App extends React.Component {
       username: "",
       password: "",
       location: "",
-      loggedIn: false
-    })
-    localStorage.clear()
+      loggedIn: false,
+      userId: ""
+    }, localStorage.clear())
+    
   }
 
  
@@ -198,14 +199,18 @@ class App extends React.Component {
           <div className="container">
             <Switch>
               <Route path="/login" render={(routeProps) => (this.state.loggedIn) ? <Redirect to="/" /> : 
-              <Login {...routeProps} />} />
+              <Login setUsername={this.setUsername} setPassword={this.setPassword}
+              {...routeProps} />} logIn={this.logIn}/>
+
               <Route path="/signup" render={(routeProps) => (this.state.loggedIn) ? <Redirect to="/" /> :
               <SignUp setUsername={this.setUsername}
               setPassword={this.setPassword} setLocation={this.setLocation} signUp={this.signUp}
               {...routeProps} /> } />
+
               <Route path="/store/:id" render={(routeProps) => <StorePage reviewText={this.reviewText}
               reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} postReview={this.postReview}
               {...routeProps} />} />
+
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 
               updateSearch={this.updateSearch} {...routeProps} /> } />
             </Switch>
