@@ -153,7 +153,7 @@ class App extends React.Component {
     .then(response => response.json())
     .then(data => {
       localStorage.setItem("token", data.token)
-      this.setState({ loggedIn: true, userId: data.user.id }, () => {debugger})
+      this.setState({ loggedIn: true, userId: data.user.id })
     })
     .catch(error => alert(error))
   }
@@ -175,7 +175,6 @@ class App extends React.Component {
     fetch(LOGINURL, options)
     .then(response => response.json())
     .then(data => {
-      // debugger
       localStorage.setItem("token", data.token)
       localStorage.setItem("userId", data.user.id)
       this.setState({loggedIn: true})
@@ -214,8 +213,6 @@ class App extends React.Component {
 
       <BrowserRouter>
         <div className="App">
-        {/* { (this.state.loggedIn) ? <NavBar2 logOut={this.logOut}/> : <NavBar/> } */}
-        {/* <NavBar /> */}
         {this.showNavbar()}
           <div className="container">
             <Switch>
