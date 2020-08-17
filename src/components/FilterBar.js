@@ -5,7 +5,7 @@ const FilterBar = props => {
         <div>
             <div className="ui search">
                 <div className="ui icon input">
-                    <input className="prompt" placeHolder="Search by Store Name" onChange={(e) => props.updateSearch(e)} />
+                    <input className="prompt" placeholder="Search by Store Name" onChange={(e) => props.updateSearch(e)} />
                     <i className="search icon" />
                 </div>
             </div>
@@ -23,7 +23,7 @@ const FilterBar = props => {
                 </select>
             </label>
 
-            <div role="listbox" aria-expanded="false" className="ui selection dropdown" tabindex="0">
+            <div role="listbox" aria-expanded="false" className="ui selection dropdown" tabIndex="0">
                     <div aria-atomic="true" aria-live="polite" role="alert" className="divider default text">Filter Search By:</div>
                     <i area-hidden="true" className="dropdown icon" />
                     

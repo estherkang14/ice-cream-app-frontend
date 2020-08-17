@@ -33,7 +33,9 @@ class App extends React.Component {
     fetch(STORESURL)
     .then(response => response.json())
     .then(stores => this.setState({ stores }))
-    console.log(localStorage)
+    if (localStorage.token) {
+      this.setState({loggedIn: true})
+    }
   }
 
   updateSearch = (e) => {
