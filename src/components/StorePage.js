@@ -90,6 +90,7 @@ class StorePage extends React.Component {
               let reviews = [...this.state.store.reviews, review]
               this.setState({store: {...this.state.store, reviews: reviews}})
           })
+          .then(alert("Review has been posted!"))
 
           e.target.reset()
       }
