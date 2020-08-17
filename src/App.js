@@ -13,7 +13,12 @@ let REVIEWSURL = BASEURL + "reviews"
 class App extends React.Component {
   state = {
     stores: [],
-    search: ""
+    search: "",
+    reviewForm: { 
+      text: "",
+      rating: "", 
+      photo: ""
+    }
   }
 
   componentDidMount() {
@@ -60,6 +65,25 @@ class App extends React.Component {
     }
   }
 
+  reviewText = (e) => {
+    let reviewForm = {...this.state.reviewForm, text: e.target.value}
+    this.setState({
+      reviewForm
+    })
+  }
+
+  reviewRating = (e) => {
+    let reviewForm = {...this.state.reviewForm, rating: e.target.value}
+    this.setState({
+      reviewForm
+    })
+  }
+
+  reviewPhoto = (e) => {
+    let reviewForm = {...this.state.reviewForm, photo: e.target.value}
+    console.log(reviewForm)
+  }
+
   render() { 
     return (
       <BrowserRouter>
@@ -68,7 +92,8 @@ class App extends React.Component {
           <div className="container">
             <Switch>
               <Route path="/signup" render={(routeProps) => <SignUp  {...routeProps} /> } />
-              <Route path="/store/:id" render={(routeProps) => <StorePage {...routeProps} />} />
+              <Route path="/store/:id" render={(routeProps) => <StorePage reviewText={this.reviewText}
+              reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} {...routeProps} />} />
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 
               updateSearch={this.updateSearch} {...routeProps} /> } />
             </Switch>
