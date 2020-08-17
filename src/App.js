@@ -21,7 +21,8 @@ class App extends React.Component {
       photo: ""
     }, 
     username: "",
-    password: ""
+    password: "",
+    location: ""
   }
 
   componentDidMount() {
@@ -99,6 +100,13 @@ class App extends React.Component {
     })
   }
 
+  setLocation = (e) => {
+    this.setState({
+      location: e.target.value
+    }
+    )
+  }
+
   signUp = (e) => {
     e.preventDefault()
     let options = {
@@ -109,7 +117,8 @@ class App extends React.Component {
       }, 
       body: JSON.stringify({
         username: this.state.username,
-        password: this.state.password
+        password: this.state.password,
+        location: this.state.location
       })
     }
 
@@ -126,7 +135,8 @@ class App extends React.Component {
           <div className="container">
             <Switch>
               <Route path="/signup" render={(routeProps) => <SignUp setUsername={this.setUsername}
-              setPassword={this.setPassword} {...routeProps} signUp={this.signUp}/> } />
+              setPassword={this.setPassword} setLocation={this.setLocation} signUp={this.signUp}
+              {...routeProps} /> } />
               <Route path="/store/:id" render={(routeProps) => <StorePage reviewText={this.reviewText}
               reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} {...routeProps} />} />
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 

@@ -13,6 +13,10 @@ const SignUp = (props) => {
                     <input placeholder="Password" name="password" onChange={(e) => props.setPassword(e)} />
                 </div>
                 <div className="field">
+                    <label>Location</label>
+                    <input placeholder="Location (e.g. Washington DC)" name="location" onChange={(e) => props.setLocation(e)} />
+                </div>
+                <div className="field">
                     <label>
                         <input type="checkbox" name="store-owner" />
                         Are you a store owner?
