@@ -88,7 +88,7 @@ class StorePage extends React.Component {
           .then(response => response.json())
           .then(review => {
               let reviews = [...this.state.store.reviews, review]
-              this.setState({store: {...this.state.store}, reviews: reviews})
+              this.setState({store: {...this.state.store, reviews: reviews}})
           })
 
           e.target.reset()
