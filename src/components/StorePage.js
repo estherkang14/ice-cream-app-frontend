@@ -3,7 +3,7 @@ import { withRouter } from 'react-router-dom'
 import ReviewForm from './ReviewForm'
 
 let REVIEWSURL = 'http://localhost:3000/reviews'
-let FAVORITESTOREURL = 'http://localhost:3000/favoritesites'
+let FAVORITESTOREURL = 'http://localhost:3000/favorite_stores'
 
 class StorePage extends React.Component {
     state = {
