@@ -132,24 +132,27 @@ class App extends React.Component {
 
   signUp = (e) => {
     e.preventDefault()
+
+    const user = {
+      username: this.state.username,
+      password: this.state.password,
+      location: this.state.location
+    }
+
     let options = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
         "Accepts": "application/json"
       }, 
-      body: JSON.stringify({
-        username: this.state.username,
-        password: this.state.password,
-        location: this.state.location
-      })
+      body: JSON.stringify({user})
     }
 
     fetch(USERSURL, options)
     .then(response => response.json())
     .then(data => {
-      localStorage.token = data.token
-      this.setState({ loggedIn: true, userId: data.user.id })
+      localStorage.setItem("token", data.token)
+      this.setState({ loggedIn: true, userId: data.user.id }, () => {debugger})
     })
     .catch(error => alert(error))
   }
@@ -171,7 +174,8 @@ class App extends React.Component {
     fetch(LOGINURL, options)
     .then(response => response.json())
     .then(data => {
-      localStorage.token = data.token
+      debugger
+      localStorage.setItem("token", data.token)
       this.setState({loggedIn: true, userId: data.user.id})
     })
   }
@@ -187,6 +191,17 @@ class App extends React.Component {
     
   }
 
+  showNavbar = () => {
+    if (this.state.loggedIn) {
+      return (
+        <NavBar2 logOut={this.logOut} />
+      )
+    } else {
+      return (
+        <NavBar />
+      )
+    }
+  }
  
 
 
@@ -195,12 +210,14 @@ class App extends React.Component {
 
       <BrowserRouter>
         <div className="App">
-        { (this.state.loggedIn) ? <NavBar2 logOut={this.logOut}/> : <NavBar/> }
+        {/* { (this.state.loggedIn) ? <NavBar2 logOut={this.logOut}/> : <NavBar/> } */}
+        {/* <NavBar /> */}
+        {this.showNavbar()}
           <div className="container">
             <Switch>
               <Route path="/login" render={(routeProps) => (this.state.loggedIn) ? <Redirect to="/" /> : 
               <Login setUsername={this.setUsername} setPassword={this.setPassword}
-              {...routeProps} />} logIn={this.logIn}/>
+              {...routeProps} logIn={this.logIn} /> }/>
 
               <Route path="/signup" render={(routeProps) => (this.state.loggedIn) ? <Redirect to="/" /> :
               <SignUp setUsername={this.setUsername}
