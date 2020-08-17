@@ -18,7 +18,7 @@ class App extends React.Component {
   state = {
     stores: [],
     search: "",
-    reviewForm: { 
+    reviewData: { 
       text: "",
       rating: "", 
       photo: ""
@@ -56,41 +56,42 @@ class App extends React.Component {
   }
 
   reviewText = (e) => {
-    let reviewForm = {...this.state.reviewForm, text: e.target.value}
+    let reviewData = {...this.state.reviewData, text: e.target.value}
     this.setState({
-      reviewForm
+      reviewData
     })
   }
 
   reviewRating = (e) => {
-    let reviewForm = {...this.state.reviewForm, rating: e.target.value}
+    let reviewData = {...this.state.reviewData, rating: e.target.value}
     this.setState({
-      reviewForm
+      reviewData
     })
   }
 
   reviewPhoto = (e) => {
-    let reviewForm = {...this.state.reviewForm, photo: e.target.value}
-    console.log(reviewForm)
+    
+    let reviewData = {...this.state.reviewData, photo: e.target.value}
+    
   }
 
-  postReview = (e, storeId) => {
-    e.preventDefault()
+  // postReview = (e, storeId) => {
+  //   e.preventDefault()
    
-      let reviewData = {...this.state.reviewForm, user_id: localStorage.userId, store_id: storeId}
-      let options = {
-        method: "POST", 
-        headers: {
-          "Content-Type": "application/json",
-          accept: "application/json"
-        },
-        body: JSON.stringify({ reviewData })
-      }
+  //     let reviewData = {...this.state.reviewData, user_id: localStorage.userId, store_id: storeId}
+  //     let options = {
+  //       method: "POST", 
+  //       headers: {
+  //         "Content-Type": "application/json",
+  //         accept: "application/json"
+  //       },
+  //       body: JSON.stringify({ reviewData })
+  //     }
 
-      fetch(REVIEWSURL, options)
-      .then(response => response.json())
-      .then(console.log("Review Added"))
-  }
+  //     fetch(REVIEWSURL, options)
+  //     .then(response => response.json())
+  //     .then(console.log("Review Added"))
+  // }
 
   setUsername= (e) => {
     this.setState({
@@ -170,7 +171,7 @@ class App extends React.Component {
       location: "",
       loggedIn: false,
       userId: ""
-    }, localStorage.clear())
+    }, localStorage.clear(), () => alert("You have been logged out!"))
     
   }
 
@@ -206,8 +207,8 @@ class App extends React.Component {
               {...routeProps} /> } />
 
               <Route path="/store/:id" render={(routeProps) => <StorePage reviewText={this.reviewText}
-              reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} postReview={this.postReview}
-              {...routeProps} />} />
+              reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} 
+              {...routeProps} reviewData={this.state.reviewData} />} />
 
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 
               updateSearch={this.updateSearch} {...routeProps} /> } />

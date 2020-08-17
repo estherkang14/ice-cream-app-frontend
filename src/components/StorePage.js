@@ -2,11 +2,14 @@ import React from 'react'
 import { withRouter } from 'react-router-dom'
 import ReviewForm from './ReviewForm'
 
+let REVIEWSURL = 'http://localhost:3000/reviews'
 
 class StorePage extends React.Component {
     state = {
         store: {}
     }
+
+   
 
     componentDidMount() {
         const id = this.props.match.params.id
@@ -43,6 +46,24 @@ class StorePage extends React.Component {
         }
     }
 
+    postReview = (e) => {
+        e.preventDefault()
+       
+          let reviewData = {...this.props.reviewData, user_id: localStorage.userId, store_id: this.state.store.id}
+          let options = {
+            method: "POST", 
+            headers: {
+              "Content-Type": "application/json",
+              accept: "application/json"
+            },
+            body: JSON.stringify({ reviewData })
+          }
+    
+          fetch(REVIEWSURL, options)
+          .then(response => response.json())
+          .then(console.log("Review Added"))
+      }
+
     render() {
         return (
             <div className="ui left aligned container">
@@ -60,7 +81,7 @@ class StorePage extends React.Component {
                     
                     { localStorage.token ? 
                         <ReviewForm reviewText={this.props.reviewText} reviewRating={this.props.reviewRating}
-                        reviewPhoto={this.props.reviewPhoto} postReview={this.props.postReview} store={this.state.store}/>
+                        reviewPhoto={this.props.reviewPhoto} postReview={this.postReview} store={this.state.store}/>
                     : null }
                 </div>
             </div>
