@@ -95,20 +95,20 @@ class App extends React.Component {
   postReview = (e, store) => {
     e.preventDefault()
     console.log(store.id)
-      // Using Logged In User + Store 
-      // let reviewData = {...this.state.reviewData, user_id: user.id, store_id: store.id}
-      // let options = {
-      //   method: "POST", 
-      //   headers: {
-      //     "Content-Type": "application/json",
-      //     accept: "application/json"
-      //   },
-      //   body: JSON.stringify({ reviewData })
-      // }
+   
+      let reviewData = {...this.state.reviewData, user_id: this.state.userId, store_id: store.id}
+      let options = {
+        method: "POST", 
+        headers: {
+          "Content-Type": "application/json",
+          accept: "application/json"
+        },
+        body: JSON.stringify({ reviewData })
+      }
 
-      // fetch(REVIEWSURL, options)
-      // .then(response => response.json())
-      // .then(console.log("Review Added"))
+      fetch(REVIEWSURL, options)
+      .then(response => response.json())
+      .then(console.log("Review Added"))
   }
 
   setUsername= (e) => {
