@@ -45,27 +45,6 @@ class App extends React.Component {
     })
   }
 
-  addNewReview = (userId, storeId, text, rating, photo) => {
-    const options = {
-      method: "POST",
-      headers: {
-        accept: "application/json",
-        "content-type": "application/json"
-      },
-      body: JSON.stringify({
-        user_id: userId,
-        store_id: storeId,
-        text,
-        rating,
-        photo
-      })
-    }
-    
-    fetch(REVIEWSURL, options)
-    .then(response => response.json())
-    .then(reviewData => console.log(reviewData))
-  }
-
   displayStores = () => {
     let stores = this.state.stores 
     let search = this.state.search
@@ -95,11 +74,10 @@ class App extends React.Component {
     console.log(reviewForm)
   }
 
-  postReview = (e, store) => {
+  postReview = (e, storeId) => {
     e.preventDefault()
-    console.log(store.id)
    
-      let reviewData = {...this.state.reviewData, user_id: this.state.userId, store_id: store.id}
+      let reviewData = {...this.state.reviewData, user_id: localStorage.userId, store_id: storeId}
       let options = {
         method: "POST", 
         headers: {

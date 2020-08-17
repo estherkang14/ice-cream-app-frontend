@@ -5,7 +5,7 @@ const ReviewForm = (props) => {
         <div>  
             <h3>Write a Review!</h3>
             <br></br>
-            <form className="ui form" onSubmit={(e) => {props.submitNewReview(e)}}>
+            <form className="ui form" onSubmit={(e) => {props.submitNewReview(e, props.store.id)}}>
                 <div className="field">
                     <label>Content:</label>
                     <textarea name="text" placeholder="Start writing your review here!"
