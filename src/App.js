@@ -128,8 +128,10 @@ class App extends React.Component {
 
     fetch(USERSURL, options)
     .then(response => response.json())
-    .then(data => {localStorage.token = data.token})
-    .then( this.setState({ loggedIn: true }) )
+    .then(data => {
+      localStorage.token = data.token
+      this.setState({ loggedIn: true, userId: data.user.id })
+    })
     .catch(error => alert(error))
   }
 
