@@ -8,6 +8,7 @@ import {BrowserRouter, Route, Switch} from 'react-router-dom';
 
 let BASEURL = "http://localhost:3000/"
 let STORESURL = BASEURL + "stores"
+let USERSURL = BASEURL + "users"
 class App extends React.Component {
   state = {
     stores: [],
@@ -16,7 +17,9 @@ class App extends React.Component {
       text: "",
       rating: "", 
       photo: ""
-    }
+    }, 
+    username: "",
+    password: ""
   }
 
   componentDidMount() {
@@ -61,6 +64,37 @@ class App extends React.Component {
     console.log(reviewForm)
   }
 
+  setUsername= (e) => {
+    this.setState({
+      username: e.target.value
+    })
+  }
+
+  setPassword = (e) => {
+    this.setState({
+      password: e.target.value
+    })
+  }
+
+  signUp = (e) => {
+    e.preventDefault()
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      }, 
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    }
+
+    fetch(USERSURL, options)
+    .then(response => response.json())
+    .then(data => {localStorage.token = data.token})
+  }
+
   render() { 
     return (
       <BrowserRouter>
@@ -68,7 +102,8 @@ class App extends React.Component {
           <NavBar />
           <div className="container">
             <Switch>
-              <Route path="/signup" render={(routeProps) => <SignUp  {...routeProps} /> } />
+              <Route path="/signup" render={(routeProps) => <SignUp setUsername={this.setUsername}
+              setPassword={this.setPassword} {...routeProps} signUp={this.signUp}/> } />
               <Route path="/store/:id" render={(routeProps) => <StorePage reviewText={this.reviewText}
               reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} {...routeProps} />} />
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 

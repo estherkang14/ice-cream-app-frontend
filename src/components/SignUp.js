@@ -1,16 +1,16 @@
 import React from 'react';
 
-const SignUp = () => {
+const SignUp = (props) => {
     return (
         <div>
-            <form className="ui form">
+            <form className="ui form" onSubmit={(e) => props.signUp(e)}>
                 <div className="field">
                     <label>Username</label>
-                    <input placeholder="Username" name="username"/>
+                    <input placeholder="Username" name="username" onChange={(e) => props.setUsername(e)}/>
                 </div>
                 <div className="field">
                     <label>Password</label>
-                    <input placeholder="Password" name="password" />
+                    <input placeholder="Password" name="password" onChange={(e) => props.setPassword(e)} />
                 </div>
                 <div className="field">
                     <label>
