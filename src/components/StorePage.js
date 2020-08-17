@@ -86,7 +86,10 @@ class StorePage extends React.Component {
     
           fetch(REVIEWSURL, options)
           .then(response => response.json())
-          .then(console.log("Review Added"))
+          .then(review => {
+              let reviews = [...this.state.store.reviews, review]
+              this.setState({store: {...this.state.store}, reviews: reviews})
+          })
 
           e.target.reset()
       }
