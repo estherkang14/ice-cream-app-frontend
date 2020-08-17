@@ -125,6 +125,7 @@ class App extends React.Component {
     fetch(USERSURL, options)
     .then(response => response.json())
     .then(data => {localStorage.token = data.token})
+    .catch(error => alert(error))
   }
 
   render() { 
