@@ -5,7 +5,7 @@ import NavBar from './components/NavBar';
 import SignUp from './components/SignUp';
 import Login from './components/LogIn';
 import StorePage from './components/StorePage';
-import {BrowserRouter, Route, Switch} from 'react-router-dom';
+import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
 let BASEURL = "http://localhost:3000/"
 let STORESURL = BASEURL + "stores"
@@ -22,7 +22,8 @@ class App extends React.Component {
     }, 
     username: "",
     password: "",
-    location: ""
+    location: "",
+    loggedIn: false
   }
 
   componentDidMount() {
@@ -125,18 +126,24 @@ class App extends React.Component {
     fetch(USERSURL, options)
     .then(response => response.json())
     .then(data => {localStorage.token = data.token})
+    .then( this.setState({ loggedIn: true }) )
     .catch(error => alert(error))
   }
 
+
   render() { 
     return (
+
       <BrowserRouter>
         <div className="App">
           <NavBar />
           <div className="container">
             <Switch>
-              <Route path="/login" render={(routeProps) => <Login {...routeProps} />} />
-              <Route path="/signup" render={(routeProps) => <SignUp setUsername={this.setUsername}
+              {/* Add ternary to check if this.state.loggedIn is true */}
+              <Route path="/login" render={(routeProps) => (this.state.loggedIn) ? <Redirect to="/" /> : 
+              <Login {...routeProps} />} />
+              <Route path="/signup" render={(routeProps) => (this.state.loggedIn) ? <Redirect to="/" /> :
+              <SignUp setUsername={this.setUsername}
               setPassword={this.setPassword} setLocation={this.setLocation} signUp={this.signUp}
               {...routeProps} /> } />
               <Route path="/store/:id" render={(routeProps) => <StorePage reviewText={this.reviewText}

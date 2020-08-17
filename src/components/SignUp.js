@@ -1,9 +1,10 @@
 import React from 'react';
+import { Redirect } from 'react-router-dom'
 
 const SignUp = (props) => {
     return (
         <div>
-            <form className="ui form" onSubmit={(e) => props.signUp(e)}>
+            <form className="ui form" onSubmit={(e) => props.signUp(e)} >
                 <div className="field">
                     <label>Username</label>
                     <input placeholder="Username" name="username" onChange={(e) => props.setUsername(e)}/>
