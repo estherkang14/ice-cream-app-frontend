@@ -134,6 +134,7 @@ class App extends React.Component {
           <NavBar />
           <div className="container">
             <Switch>
+              <Route path="/login" render={(routeProps) => <Login {...routeProps} />} />
               <Route path="/signup" render={(routeProps) => <SignUp setUsername={this.setUsername}
               setPassword={this.setPassword} setLocation={this.setLocation} signUp={this.signUp}
               {...routeProps} /> } />
