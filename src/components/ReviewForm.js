@@ -5,7 +5,7 @@ const ReviewForm = (props) => {
         <div>  
             <h3>Write a Review!</h3>
             <br></br>
-            <div className="ui form">
+            <form className="ui form" onSubmit={(e) => {props.submitNewReview(e)}}>
                 <div className="field">
                     <label>Content:</label>
                     <textarea name="text" placeholder="Start writing your review here!"
@@ -34,7 +34,7 @@ const ReviewForm = (props) => {
                    
                 </div>
                 <button type="submit" className="ui button">Submit</button>
-            </div>
+            </form>
         </div>
     )
 }

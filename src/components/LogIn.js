@@ -1,9 +1,9 @@
 import React from 'react';
 
-const LogIn = () => {
+const LogIn = (props) => {
     return (
         <div>
-            <form className="ui form">
+            <form className="ui form" onSubmit={(e) => {props.logIn(e)}}>
                 <div className="field">
                     <label>Username</label>
                     <input placeholder="Username" name="username"/>

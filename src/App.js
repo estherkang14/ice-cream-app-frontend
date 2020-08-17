@@ -12,6 +12,8 @@ let BASEURL = "http://localhost:3000/"
 let STORESURL = BASEURL + "stores"
 let USERSURL = BASEURL + "users"
 let REVIEWSURL = BASEURL + "reviews"
+let LOGINURL = BASEURL + 'login'
+
 class App extends React.Component {
   state = {
     stores: [],
@@ -129,6 +131,28 @@ class App extends React.Component {
     .then(data => {localStorage.token = data.token})
     .then( this.setState({ loggedIn: true }) )
     .catch(error => alert(error))
+  }
+
+  logIn = (e) => {
+    e.preventDefault()
+    let options = {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accepts': 'application/json'
+      },
+      body: JSON.stringify({
+        username: this.state.username,
+        password: this.state.password
+      })
+    }
+
+    fetch(LOGINURL, options)
+    .then(response => response.json())
+    .then(data => {
+      localStorage.token = data.token
+      this.state({loggedIn: true, userId: data.user.id})
+    })
   }
 
   logOut = () => {
