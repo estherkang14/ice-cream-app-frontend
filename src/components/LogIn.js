@@ -10,7 +10,7 @@ const LogIn = (props) => {
                 </div>
                 <div className="field">
                     <label>Password</label>
-                    <input placeholder="Password" name="password" onChange={(e) => props.setPassword(e)}/>
+                    <input placeholder="Password" type="password" name="password" onChange={(e) => props.setPassword(e)}/>
                 </div>
                 <button type="submit" className="ui button">Submit</button> 
             </form>
