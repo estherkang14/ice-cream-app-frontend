@@ -1,5 +1,6 @@
 body {
   margin: 0;
+  background-color: #FFFBEF !important;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
@@ -10,4 +11,13 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+div .ui.menu {
+  background-color:	#FDDDE6;
+}
+
+.menu-item {
+  font-weight: bold !important;
+  color: #7B3F00 !important;
 }
