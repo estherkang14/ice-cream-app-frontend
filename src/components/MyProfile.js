@@ -33,7 +33,7 @@ class MyProfile extends React.Component {
                     return (
                         <div key={review.id} style={{paddingBottom: '20px'}}>
                             <p>
-                                {review.store.name} - {review.store.location} ({review.rating}/5)
+                                <a href={`/store/${review.store.id}`}>{review.store.name}</a> - {review.store.location} ({review.rating}/5)
                                 <br />
                                 {review.text}
                                 <br />
