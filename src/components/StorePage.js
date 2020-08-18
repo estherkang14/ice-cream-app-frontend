@@ -50,10 +50,12 @@ class StorePage extends React.Component {
                     <div key={review.id} style={{paddingBottom: '20px'}}>
                         <p>
                             {review.user.username} - {review.user.location} ({review.rating}/5)
+                            <br /> 
+                            <strong>{review.text}</strong>
                             <br />
-                            <img src={review.photo} />
+                            <img className="ui small image" src={review.photo} />
                             <br />
-                            {review.text}
+                            
                         </p>
                     </div> 
                 )}
