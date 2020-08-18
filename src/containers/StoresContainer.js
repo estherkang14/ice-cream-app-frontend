@@ -6,7 +6,7 @@ import StoreMap from '../components/StoreMap'
 const StoresContainer = (props) => {
     return (
         <div className="container">
-            <StoreMap />
+            <StoreMap stores={props.stores} />
             <FilterBar updateSearch={props.updateSearch} filterStores={props.filterStores}/>
             <br></br>
             <div className="ui centered cards">
