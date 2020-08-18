@@ -14,7 +14,7 @@ class MyProfile extends React.Component {
 
 
     renderFavoriteStores = () => {
-        if (this.state.user['favorite_stores']) {
+        if (this.state.user['favorite_stores'] && this.state.user['favorite_stores'].length > 0) {
             return this.state.user['favorite_stores'].map(
                 store => { 
                     return (
