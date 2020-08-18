@@ -6,6 +6,7 @@ import NavBar2 from './components/NavBar2';
 import SignUp from './components/SignUp';
 import Login from './components/LogIn';
 import StorePage from './components/StorePage';
+import MyProfile from './components/MyProfile';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
 let BASEURL = "http://localhost:3000/"
@@ -193,6 +194,8 @@ class App extends React.Component {
               // reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} 
               // {...routeProps} reviewData={this.state.reviewData} 
               />} />
+
+              <Route path="/my-profile" render={(routeProps) => <MyProfile />} />
 
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 
               updateSearch={this.updateSearch} filterStores={this.filterStores}{...routeProps} /> } />
