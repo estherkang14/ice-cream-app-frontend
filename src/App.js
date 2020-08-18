@@ -48,18 +48,22 @@ class App extends React.Component {
   }
 
   displayStores = () => {
-    let stores = this.state.filteredStores 
+    let stores = this.state.stores 
+    let filteredStores = this.state.filteredStores
     let search = this.state.search
     if (stores.length > 0 && search !== "") {
       return stores.filter(store => store.name.toLowerCase().includes(search.toLowerCase()))
+    } else if (filteredStores.length > 0 && search == "") {
+      return filteredStores
     } else {
       return stores
     }
   }
 
   filterStores = (e) => {
-    let filteredStores = this.state.stores 
-    if (e.target.value === "None") {
+    let stores = this.state.stores 
+    let filteredStores = stores
+    if (e.target.value === "All") {
       this.setState({ filteredStores })
     } else if (e.target.value === "Highest Rated") {
       this.setState({ filteredStores: filteredStores.sort( (store1, store2) => store2.avg_rating - store1.avg_rating)})
@@ -71,7 +75,7 @@ class App extends React.Component {
       this.setState({ filteredStores: filteredStores.filter( store => store.location === "Washington, DC")})
     } else if (e.target.value === "Baltimore, MD") {
       this.setState({ filteredStores: filteredStores.filter( store => store.location === "Baltimore, MD")})
-    }
+    } 
   }
 
   setUsername= (e) => {

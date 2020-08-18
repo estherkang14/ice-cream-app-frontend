@@ -15,7 +15,7 @@ const FilterBar = props => {
                 
                 <select className="ui selection dropdown" onChange={(e) => props.filterStores(e)}> 
                     <option>Filter Search:</option>
-                    <option value="None">No filter</option>
+                    <option value="All">View All</option>
                     <option value="Highest Rated">Highest Rated</option>
                     <option value="Alphabetically">Alphabetically</option>
                     <option value="Most Flavors">Most Flavors Offered</option>
