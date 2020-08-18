@@ -12,7 +12,8 @@ class StorePage extends React.Component {
             text: "",
             rating: "", 
             photo: ""
-        }
+        },
+        isUserFavoriteStore: false
     }
 
    
@@ -22,6 +23,14 @@ class StorePage extends React.Component {
         fetch('http://localhost:3000/stores/' + id)
         .then(response => response.json())
         .then(store => this.setState({store}))
+
+        if (localStorage.token) {
+            const user_id = localStorage.getItem('userId')
+
+            fetch(`http://localhost:3000/check-favorite-store?user_id=${user_id}&store_id=${id}`)
+            .then(response => response.json())
+            .then(result => this.setState({isUserFavoriteStore: result.result}))
+        }
     }
 
     renderIceCreams = () => {
@@ -117,6 +126,14 @@ class StorePage extends React.Component {
         .then(console.log)
     }
 
+    renderFavoriteOrUnfavoriteButton = () => {
+        if (this.state.isUserFavoriteStore) {
+            return <button className="ui button" tabIndex="0">Remove from favorite stores</button>
+        } else {
+            return <button className="ui button" tabIndex="0" onClick={this.addToFavoriteStore}>Add to favorite store!</button>
+        }
+    }
+
     render() {
         return (
             <div className="ui left aligned container">
@@ -124,7 +141,7 @@ class StorePage extends React.Component {
                 <h3>{this.state.store.location}</h3>
                 {
                     (localStorage.token) 
-                    ? <button className="ui button" tabindex="0" onClick={this.addToFavoriteStore}>Add to favorite store!</button>
+                    ? this.renderFavoriteOrUnfavoriteButton()
                     : null
                 }
                 <div>
