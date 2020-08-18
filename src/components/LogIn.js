@@ -2,7 +2,7 @@ import React from 'react';
 
 const LogIn = (props) => {
     return (
-        <div>
+        <div className="ui center aligned container">
             <form className="ui form" onSubmit={(e) => {props.logIn(e)}}>
                 <div className="field">
                     <label>Username</label>

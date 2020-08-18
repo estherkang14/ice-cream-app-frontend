@@ -3,7 +3,7 @@ import { Redirect } from 'react-router-dom'
 
 const SignUp = (props) => {
     return (
-        <div>
+        <div className="ui center aligned container">
             <form className="ui form" onSubmit={(e) => props.signUp(e)} >
                 <div className="field">
                     <label>Username</label>
