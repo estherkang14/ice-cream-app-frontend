@@ -1,4 +1,5 @@
 import React from 'react';
+import logo from './find.png'
 
 const NavBar = (props) => {
     return (
@@ -6,6 +7,11 @@ const NavBar = (props) => {
             {/* <a className="item" href="/my-profile">My Profile</a> */}
             <a className="item menu-item" onClick={() => props.loginCheck()}>My Profile</a>
             <a className="item menu-item" href="/">Stores</a>
+            <div className="center menu">
+                <div className="item">
+                    <img src={logo} />
+                </div>
+            </div>
             
             <div className="right menu">
            
