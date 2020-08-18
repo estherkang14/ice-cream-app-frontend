@@ -3,7 +3,8 @@ import React from 'react';
 const NavBar = (props) => {
     return (
         <div className="ui menu"> 
-            <a className="item" href="/my-profile">My Profile</a>
+            {/* <a className="item" href="/my-profile">My Profile</a> */}
+            <a className="item" onClick={() => props.loginCheck()}>My Profile</a>
             <a className="item" href="/">Stores</a>
             <div className="right menu">
            
@@ -20,3 +21,4 @@ const NavBar = (props) => {
 }
 
 export default NavBar;
+

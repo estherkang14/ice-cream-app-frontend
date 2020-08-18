@@ -156,7 +156,7 @@ class App extends React.Component {
       location: "",
       loggedIn: false,
       userId: ""
-    }, localStorage.clear(), () => alert("You have been logged out!"))
+    }, localStorage.clear(), alert("You have been logged out!"))
     
   }
 
@@ -167,9 +167,13 @@ class App extends React.Component {
       )
     } else {
       return (
-        <NavBar />
+        <NavBar loginCheck={this.loginCheck}/>
       )
     }
+  }
+
+  loginCheck = () => {
+    alert("Sorry! You must be logged in.")
   }
 
 
@@ -199,7 +203,7 @@ class App extends React.Component {
               // {...routeProps} reviewData={this.state.reviewData} 
               />} />
 
-              <Route path="/my-profile" render={(routeProps) => <MyProfile />} />
+              <Route path="/my-profile" render={(routeProps) => <MyProfile {...routeProps}/>} />
 
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 
               updateSearch={this.updateSearch} filterStores={this.filterStores}{...routeProps} /> } />
