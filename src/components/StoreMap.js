@@ -20,7 +20,7 @@ export default class StoreMap extends React.Component {
           (store) => { return (
             <Marker position={[store.latitude, store.longitude]}>
               <Popup>
-                {store.name}
+              <a href={`/store/${store.id}`}>{store.name}</a>
               </Popup>
             </Marker>
           )}
