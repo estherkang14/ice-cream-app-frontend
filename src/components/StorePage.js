@@ -51,6 +51,8 @@ class StorePage extends React.Component {
                         <p>
                             {review.user.username} - {review.user.location} ({review.rating}/5)
                             <br />
+                            <img src={review.photo} />
+                            <br />
                             {review.text}
                         </p>
                     </div> 
@@ -76,8 +78,9 @@ class StorePage extends React.Component {
       }
     
       reviewPhoto = (e) => {
-        let reviewData = {...this.state.reviewData, photo: e.target.value}
-        if (e.target.value) this.setState({ reviewData })
+        let reviewData = {...this.state.reviewData, photo: window.URL.createObjectURL(e.target.files[0])}
+        // debugger
+        if (e.target.files[0]) this.setState({ reviewData })
       }
 
     postReview = (e) => {
