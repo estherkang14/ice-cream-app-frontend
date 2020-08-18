@@ -123,12 +123,21 @@ class StorePage extends React.Component {
 
         fetch(FAVORITESTOREURL, options)
         .then(response => response.json())
-        .then(console.log)
+        .then(result => this.setState({isUserFavoriteStore: true}))
+    }
+
+    removeFromFavoriteStore = () => {
+        let userId = localStorage.userId
+        let storeId = this.state.store.id
+
+        fetch(`http://localhost:3000/delete-favorite-store?user_id=${userId}&store_id=${storeId}`)
+        .then(response => response.json())
+        .then(this.setState({isUserFavoriteStore: false}))
     }
 
     renderFavoriteOrUnfavoriteButton = () => {
         if (this.state.isUserFavoriteStore) {
-            return <button className="ui button" tabIndex="0">Remove from favorite stores</button>
+            return <button className="ui button" tabIndex="0" onClick={this.removeFromFavoriteStore}>Remove from favorite stores</button>
         } else {
             return <button className="ui button" tabIndex="0" onClick={this.addToFavoriteStore}>Add to favorite store!</button>
         }
