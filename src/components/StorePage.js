@@ -76,9 +76,8 @@ class StorePage extends React.Component {
       }
     
       reviewPhoto = (e) => {
-        
         let reviewData = {...this.state.reviewData, photo: e.target.value}
-        // FIX THIS !
+        if (e.target.value) this.setState({ reviewData })
       }
 
     postReview = (e) => {

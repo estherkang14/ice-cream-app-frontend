@@ -53,7 +53,7 @@ class App extends React.Component {
     let search = this.state.search
     if (stores.length > 0 && search !== "") {
       return stores.filter(store => store.name.toLowerCase().includes(search.toLowerCase()))
-    } else if (filteredStores.length > 0 && search == "") {
+    } else if (filteredStores.length > 0 && search === "") {
       return filteredStores
     } else {
       return stores

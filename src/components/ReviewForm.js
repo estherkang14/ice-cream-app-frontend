@@ -25,8 +25,8 @@ const ReviewForm = (props) => {
                 </div>
                 <div className="ui fluid segment">
                     <label> Add a Photo: </label> <br></br>
-                    <input type="file" className="inputfile ui button" id="embedpollfileinput"
-                    onChange={(e) => props.reviewPhoto(e)} />
+                    <input type="file" className="inputfile ui button" accept="image/png, image/jpeg, image/jpg" 
+                    id="embedpollfileinput" onChange={(e) => props.reviewPhoto(e)} />
                     <label for="embedpollfileinput" className="ui button">
                         <i className="ui upload icon"/>
                         Upload Image
