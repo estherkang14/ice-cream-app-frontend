@@ -3,8 +3,8 @@ import { Map, TileLayer, Marker, Popup } from 'react-leaflet'
 
 export default class StoreMap extends React.Component {
   state = {
-    lat: 51.505,
-    lng: -0.09,
+    lat: 38.904722,
+    lng: -77.016389,
     zoom: 13,
   }
 
