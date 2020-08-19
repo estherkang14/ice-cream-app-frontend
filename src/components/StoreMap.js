@@ -10,18 +10,22 @@ export default class StoreMap extends React.Component {
 
   setLocationState = () => {
     if (this.props.mapLocation === 'Washington, DC') {
-      this.setState({lat: 38.904722, lng: -77.016389})
+      return [38.904772, -77.016389]
+      // this.setState({lat: 38.904722, lng: -77.016389})
     } else if (this.props.mapLocation === 'Baltimore, MD') {
-      this.setState({lat: 39.283333, lng: -76.616667})
+      return [39.283333, -76.616667]
+      // this.setState({lat: 39.283333, lng: -76.616667})
     } else {
-      this.setState({lat: 38.904722, lng: -77.016389})
+      return [38.904772, -77.016389]
+      // this.setState({lat: 38.904722, lng: -77.016389})
     }
   }
 
   render() {
     
-    this.setLocationState();
-    let position = [this.state.lat, this.state.lng]
+    // this.setLocationState();
+    // let position = [this.state.lat, this.state.lng]
+    let position = this.setLocationState();
     
     return (
       <Map center={position} zoom={this.state.zoom} style={{height: '300px'}}>
