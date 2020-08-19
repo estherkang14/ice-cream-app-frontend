@@ -7,7 +7,7 @@ import logo from '../components/findnewer.png'
 const StoresContainer = (props) => {
     return (
         <div className="container">
-            <img src={logo}/>
+            <img src={logo} className="ui medium image centered" />
             <StoreMap stores={props.stores} />
             <FilterBar updateSearch={props.updateSearch} filterStores={props.filterStores}/>
             <br></br>
