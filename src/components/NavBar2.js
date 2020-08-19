@@ -10,7 +10,7 @@ const NavBar2 = (props) => {
             <a className="item menu-item" href="/my-profile">My Profile</a>
             <a className="item menu-item" href="/">Stores</a>
             { localStorage['is_store_owner'] === 'true'
-                ? (<a className="item menu-item" href="/">Add A Store</a>)
+                ? (<a className="item menu-item" href="/addstore">Add A Store</a>)
                 : null
             }
             <div className="right menu">
