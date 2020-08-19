@@ -64,7 +64,8 @@ class App extends React.Component {
     let stores = this.state.stores 
     let filteredStores = stores
     if (e.target.value === "All") {
-      this.setState({ filteredStores })
+      this.setState({ filteredStores,
+        mapLocation: 'Washington, DC' })
     } else if (e.target.value === "Highest Rated") {
       this.setState({ filteredStores: filteredStores.sort( (store1, store2) => store2.avg_rating - store1.avg_rating)})
     } else if (e.target.value === "Alphabetically") {
