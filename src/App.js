@@ -27,7 +27,7 @@ class App extends React.Component {
     username: "",
     password: "",
     location: "",
-    isStoreOwner: false,
+    is_store_owner: false,
     loggedIn: false,
     mapLocation: null
   }
@@ -107,9 +107,9 @@ class App extends React.Component {
 
   setStoreOwner = (e) => {
     if (e.target.checked) {
-      this.setState({ isStoreOwner: true})
+      this.setState({ is_store_owner: true})
     } else {
-      this.setState({ isStoreOwner: false})
+      this.setState({ is_store_owner: false})
     }
   }
 
@@ -120,7 +120,7 @@ class App extends React.Component {
       username: this.state.username,
       password: this.state.password,
       location: this.state.location,
-      isStoreOwner: this.state.isStoreOwner
+      is_store_owner: this.state.is_store_owner
     }
 
     let options = {
