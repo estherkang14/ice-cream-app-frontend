@@ -11,7 +11,7 @@ class StorePage extends React.Component {
         reviewData: { 
             text: "",
             rating: "", 
-            photo: ""
+            photo: {}
         },
         isUserFavoriteStore: false
     }
@@ -81,22 +81,32 @@ class StorePage extends React.Component {
       }
     
       reviewPhoto = (e) => {
-        let reviewData = {...this.state.reviewData, photo: window.URL.createObjectURL(e.target.files[0])}
-        // debugger
-        if (e.target.files[0]) this.setState({ reviewData })
+          console.log(e.target.files[0])
+        // let reviewData = {...this.state.reviewData, photo: e.target.files[0]}
+        this.setState({ photo: e.target.files[0] })
       }
 
     postReview = (e) => {
         e.preventDefault()
-       
-          let reviewData = {...this.state.reviewData, user_id: localStorage.userId, store_id: this.state.store.id}
+
+        const form = new FormData()
+        form.append("user_id", localStorage.userId)
+        form.append("store_id", this.state.store.id)
+        form.append("photo", this.state.photo)
+        form.append("text", this.state.reviewData.text)
+        form.append("rating", this.state.reviewData.rating)
+        
+          let reviewData = {...this.state.reviewData, 
+            user_id: localStorage.userId, 
+            store_id: this.state.store.id, 
+            photo: this.state.photo
+        }
+        
+        console.log(reviewData)
+    
           let options = {
             method: "POST", 
-            headers: {
-              "Content-Type": "application/json",
-              accept: "application/json"
-            },
-            body: JSON.stringify({ reviewData })
+            body: form
           }
     
           fetch(REVIEWSURL, options)
