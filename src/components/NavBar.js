@@ -5,13 +5,11 @@ const NavBar = (props) => {
     return (
         <div className="ui menu"> 
             {/* <a className="item" href="/my-profile">My Profile</a> */}
+            <div className="item" style={{padding: 0, width: '50px'}}>
+                <img src={logo} style={{width: '45px'}} />
+            </div>  
             <a className="item menu-item" onClick={() => props.loginCheck()}>My Profile</a>
             <a className="item menu-item" href="/">Stores</a>
-            <div className="center menu">
-                <div className="item">
-                    <img src={logo} />
-                </div>
-            </div>
             
             <div className="right menu">
            
