@@ -29,7 +29,9 @@ class App extends React.Component {
     location: "",
     is_store_owner: false,
     loggedIn: false,
-    mapLocation: null
+    mapLocation: null,
+    storeName: "",
+    storeLocation: ""
   }
 
   componentDidMount() {
@@ -196,6 +198,40 @@ class App extends React.Component {
     alert("Sorry! You must be logged in.")
   }
 
+  storeName = (e) => {
+    this.setState({ storeName: e.target.value })
+  }
+
+  storeLocation = (e) => {
+    this.setState({ storeLocation: e.target.value })
+  }
+
+  postStore = (e) => {
+    e.preventDefault()
+
+    const store = {
+      storeName: this.state.storeName,
+      storeLocation: this.state.storeLocation
+    }
+
+    let options = {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        "Accepts": "application/json"
+      }, 
+      body: JSON.stringify({store})
+    }
+
+    fetch(STORESURL, options)
+    .then(response => response.json())
+    .then(data => {
+      localStorage.setItem("token", data.token)
+      localStorage.setItem("storeId", data.store.id)
+      this.setState({ loggedIn: true })
+    })
+    .catch(error => alert(error))
+  }
 
  
 
