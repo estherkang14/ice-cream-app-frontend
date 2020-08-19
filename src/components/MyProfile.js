@@ -37,7 +37,8 @@ class MyProfile extends React.Component {
                                 <br />
                                 {review.text}
                                 <br />
-                                {(review.photo) ? review.photo : null}
+                                {(review.photo) ? <img src={review.photo} className="ui small image"
+                                alt="image from review" /> : null}
                             </p>
                         </div>
                     )

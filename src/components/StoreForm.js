@@ -2,7 +2,7 @@ import React from 'react';
 
 const StoreForm = (props) => {
     return (
-        <div>  
+        <div className="ui center aligned container">  
             <h3>Add a Store!</h3>
             <br></br>
             <form className="ui form" onSubmit={(e) => props.postStore(e)}>
