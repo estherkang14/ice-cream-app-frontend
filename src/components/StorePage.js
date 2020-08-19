@@ -53,7 +53,7 @@ class StorePage extends React.Component {
                             <br /> 
                             <strong>{review.text}</strong>
                             <br />
-                            <img className="ui small image" src={review.photo} />
+                            <img className="ui small image" alt="review" src={review.photo} />
                             <br />
                             
                         </p>

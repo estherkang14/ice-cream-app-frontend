@@ -7,7 +7,7 @@ import logo from '../components/findnewer.png'
 const StoresContainer = (props) => {
     return (
         <div className="container">
-            <img src={logo} className="ui medium image centered" />
+            <img src={logo} alt="find my ice cream logo" className="ui medium image centered" />
             <StoreMap stores={props.stores} mapLocation={props.mapLocation} />
             <FilterBar updateSearch={props.updateSearch} filterStores={props.filterStores}/>
             <br></br>
