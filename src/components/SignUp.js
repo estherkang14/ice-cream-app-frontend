@@ -18,7 +18,7 @@ const SignUp = (props) => {
                 </div>
                 <div className="field">
                     <label>
-                        <input type="checkbox" name="store-owner" />
+                        <input type="checkbox" name="store-owner" checked={null} onChange={(e) => props.setStoreOwner(e)} />
                         Are you a store owner?
                     </label>
                 </div>

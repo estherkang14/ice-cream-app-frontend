@@ -28,6 +28,7 @@ export default class StoreMap extends React.Component {
     let position = this.setLocationState();
     
     return (
+      
       <Map center={position} zoom={this.state.zoom} style={{height: '300px'}}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
@@ -43,6 +44,7 @@ export default class StoreMap extends React.Component {
           )}
         )}
       </Map>
+      
     )
   }
 }

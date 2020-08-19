@@ -53,7 +53,8 @@ class StorePage extends React.Component {
                             <br /> 
                             <strong>{review.text}</strong>
                             <br />
-                            <img className="ui small image" alt="review" src={review.photo} />
+                            {(review.photo) ? <img className="ui small image" alt="review" src={review.photo} />
+                            : null} 
                             <br />
                             
                         </p>
@@ -61,7 +62,7 @@ class StorePage extends React.Component {
                 )}
             )
         } else {
-            return <p>There are no reviews for this store!</p>
+            return <p>There are no reviews for this store! Be the first to review!</p>
         }
     }
 

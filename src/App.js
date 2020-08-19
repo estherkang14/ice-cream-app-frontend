@@ -27,6 +27,7 @@ class App extends React.Component {
     username: "",
     password: "",
     location: "",
+    isStoreOwner: false,
     loggedIn: false,
     mapLocation: null
   }
@@ -104,13 +105,22 @@ class App extends React.Component {
     )
   }
 
+  setStoreOwner = (e) => {
+    if (e.target.checked) {
+      this.setState({ isStoreOwner: true})
+    } else {
+      this.setState({ isStoreOwner: false})
+    }
+  }
+
   signUp = (e) => {
     e.preventDefault()
 
     const user = {
       username: this.state.username,
       password: this.state.password,
-      location: this.state.location
+      location: this.state.location,
+      isStoreOwner: this.state.isStoreOwner
     }
 
     let options = {
@@ -201,7 +211,8 @@ class App extends React.Component {
 
               <Route path="/signup" render={(routeProps) => (this.state.loggedIn) ? <Redirect to="/" /> :
               <SignUp setUsername={this.setUsername}
-              setPassword={this.setPassword} setLocation={this.setLocation} signUp={this.signUp}
+              setPassword={this.setPassword} setLocation={this.setLocation} 
+              signUp={this.signUp} setStoreOwner={this.setStoreOwner}
               {...routeProps} /> } />
 
               <Route path="/store/:id" render={(routeProps) => <StorePage 
