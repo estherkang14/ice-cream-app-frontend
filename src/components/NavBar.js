@@ -10,7 +10,6 @@ const NavBar = (props) => {
             </div>  
             <a className="item menu-item" onClick={() => props.loginCheck()}>My Profile</a>
             <a className="item menu-item" href="/">Stores</a>
-            
             <div className="right menu">
            
                 {/* <div className="item menu-item">
