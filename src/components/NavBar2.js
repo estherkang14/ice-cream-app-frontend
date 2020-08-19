@@ -1,5 +1,5 @@
 import React from 'react';
-import logo from './findnew.png'
+import logo from './icecream.png'
 
 const NavBar2 = (props) => {
     return (

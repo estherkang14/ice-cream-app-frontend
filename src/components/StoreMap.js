@@ -11,7 +11,7 @@ export default class StoreMap extends React.Component {
   render() {
     const position = [this.state.lat, this.state.lng]
     return (
-      <Map center={position} zoom={this.state.zoom} style={{height: '250px'}}>
+      <Map center={position} zoom={this.state.zoom} style={{height: '300px'}}>
         <TileLayer
           attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
