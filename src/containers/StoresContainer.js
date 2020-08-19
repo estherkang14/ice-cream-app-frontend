@@ -8,7 +8,7 @@ const StoresContainer = (props) => {
     return (
         <div className="container">
             <img src={logo} className="ui medium image centered" />
-            <StoreMap stores={props.stores} />
+            <StoreMap stores={props.stores} mapLocation={props.mapLocation} />
             <FilterBar updateSearch={props.updateSearch} filterStores={props.filterStores}/>
             <br></br>
             <div className="ui centered cards">

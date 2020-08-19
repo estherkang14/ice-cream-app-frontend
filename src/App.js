@@ -12,7 +12,6 @@ import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 let BASEURL = "http://localhost:3000/"
 let STORESURL = BASEURL + "stores"
 let USERSURL = BASEURL + "users"
-let REVIEWSURL = BASEURL + "reviews"
 let LOGINURL = BASEURL + 'login'
 
 class App extends React.Component {
@@ -28,7 +27,8 @@ class App extends React.Component {
     username: "",
     password: "",
     location: "",
-    loggedIn: false
+    loggedIn: false,
+    mapLocation: null
   }
 
   componentDidMount() {
@@ -72,9 +72,15 @@ class App extends React.Component {
     } else if (e.target.value === "Most Flavors") {
       this.setState({ filteredStores: filteredStores.sort( (store1, store2) => store2.ice_cream_count - store1.ice_cream_count)})
     } else if (e.target.value === "Washington, DC") {
-      this.setState({ filteredStores: filteredStores.filter( store => store.location === "Washington, DC")})
+      this.setState({ 
+        filteredStores: filteredStores.filter( store => store.location === "Washington, DC"),
+        mapLocation: 'Washington, DC'
+      })
     } else if (e.target.value === "Baltimore, MD") {
-      this.setState({ filteredStores: filteredStores.filter( store => store.location === "Baltimore, MD")})
+      this.setState({ 
+        filteredStores: filteredStores.filter( store => store.location === "Baltimore, MD"), 
+        mapLocation: 'Baltimore, MD'
+      })
     } 
   }
 
@@ -206,7 +212,8 @@ class App extends React.Component {
               <Route path="/my-profile" render={(routeProps) => <MyProfile {...routeProps}/>} />
 
               <Route path="/" render={(routeProps) => <StoresContainer stores={this.displayStores()} 
-              updateSearch={this.updateSearch} filterStores={this.filterStores}{...routeProps} /> } />
+              updateSearch={this.updateSearch} filterStores={this.filterStores} mapLocation={this.state.mapLocation}
+              {...routeProps} /> } />
             </Switch>
           </div>
         </div>
