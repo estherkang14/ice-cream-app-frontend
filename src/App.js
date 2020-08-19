@@ -7,6 +7,7 @@ import SignUp from './components/SignUp';
 import Login from './components/LogIn';
 import StorePage from './components/StorePage';
 import MyProfile from './components/MyProfile';
+import StoreForm from './components/StoreForm';
 import {BrowserRouter, Route, Switch, Redirect} from 'react-router-dom';
 
 let BASEURL = "http://localhost:3000/"
@@ -253,6 +254,9 @@ class App extends React.Component {
               setPassword={this.setPassword} setLocation={this.setLocation} 
               signUp={this.signUp} setStoreOwner={this.setStoreOwner}
               {...routeProps} /> } />
+
+              <Route path="/addstore" render={(routeProps) => <StoreForm storeName={this.storeName} 
+              storeLocation={this.storeLocation} postStore={this.postStore} {...routeProps } />} />
 
               <Route path="/store/:id" render={(routeProps) => <StorePage 
               // reviewText={this.reviewText}

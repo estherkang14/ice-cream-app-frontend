@@ -8,14 +8,14 @@ const StoreForm = (props) => {
             <form className="ui form" onSubmit={(e) => props.postStore(e)}>
                 <div className="field">
                     <label>Store Name:</label>
-                    <textarea name="text" placeholder="e.g. 'Scoop-y Doo'"
-                    onChange={(e) => props.storeName(e)}></textarea>
+                    <input name="text" placeholder="e.g. 'Scoop-y Doo'" 
+                    onChange={(e) => props.storeName(e)}></input>
                 </div>
 
                 <div className="field">
                     <label>Location:</label>
-                    <textarea name="text" placeholder="e.g. Washington, DC" onChange={(e) => props.storeLocation(e)}>
-                    </textarea>
+                    <input name="text" placeholder="e.g. Washington, DC"  
+                    onChange={(e) => props.storeLocation(e)}></input>
                 </div>
 
                 <button type="submit" className="ui button">
