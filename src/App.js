@@ -136,6 +136,8 @@ class App extends React.Component {
     .then(response => response.json())
     .then(data => {
       localStorage.setItem("token", data.token)
+      localStorage.setItem("userId", data.user.id)
+      localStorage.setItem("is_store_owner", data.user['is_store_owner'])
       this.setState({ loggedIn: true, userId: data.user.id })
     })
     .catch(error => alert(error))
@@ -160,6 +162,7 @@ class App extends React.Component {
     .then(data => {
       localStorage.setItem("token", data.token)
       localStorage.setItem("userId", data.user.id)
+      localStorage.setItem("is_store_owner", data.user['is_store_owner'])
       this.setState({loggedIn: true})
       // this.setState({loggedIn: true, userId: data.user.id})
     })
