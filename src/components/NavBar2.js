@@ -14,7 +14,7 @@ const NavBar2 = (props) => {
                 : null
             }
             <div className="right menu">
-                <div className="item menu-item" onClick={(e) => {props.logOut(e)}}>Log Out</div>
+                <a className="item menu-item" href="/" onClick={(e) => {props.logOut(e)}}>Log Out</a>
             </div>
         </div>
     )

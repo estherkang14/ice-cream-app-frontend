@@ -179,9 +179,8 @@ class App extends React.Component {
       location: "",
       loggedIn: false,
       userId: ""
-    }, localStorage.clear(), alert("You have been logged out!"), <Redirect to="/" />)
-    
-    
+    }, localStorage.clear(), alert("You have been logged out!"))
+
   }
 
   showNavbar = () => {
