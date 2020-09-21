@@ -20,11 +20,6 @@ class App extends React.Component {
     stores: [],
     filteredStores: [],
     search: "",
-    // reviewData: { 
-    //   text: "",
-    //   rating: "", 
-    //   photo: ""
-    // }, 
     username: "",
     password: "",
     location: "",
@@ -167,7 +162,6 @@ class App extends React.Component {
       localStorage.setItem("userId", data.user.id)
       localStorage.setItem("is_store_owner", data.user['is_store_owner'])
       this.setState({loggedIn: true})
-      // this.setState({loggedIn: true, userId: data.user.id})
     })
   }
 
@@ -258,11 +252,7 @@ class App extends React.Component {
               <Route path="/addstore" render={(routeProps) => <StoreForm storeName={this.storeName} 
               storeLocation={this.storeLocation} postStore={this.postStore} {...routeProps } />} />
 
-              <Route path="/store/:id" render={(routeProps) => <StorePage 
-              // reviewText={this.reviewText}
-              // reviewRating={this.reviewRating} reviewPhoto={this.reviewPhoto} 
-              // {...routeProps} reviewData={this.state.reviewData} 
-              />} />
+              <Route path="/store/:id" render={(routeProps) => <StorePage {...routeProps} />} />
 
               <Route path="/my-profile" render={(routeProps) => <MyProfile {...routeProps}/>} />
 
