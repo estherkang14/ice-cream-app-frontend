@@ -1,11 +1,11 @@
 # Find My Ice Cream
 
-Flatiron School - Module 4 Project - created by Michael Jester and Esther Kang
+Flatiron School - Module 4 Project - created by Michael Jester and Esther Kang (2020)
 
 ![findmyicecreamlogo]](https://cdn.discordapp.com/attachments/749783037281042626/758082506263101541/findnewer.png)
 
-- Frontend: https://github.com/estherkang14/mod5-proj-frontend
-- Backend: https://github.com/estherkang14/mod5-proj-backend
+- Frontend: https://github.com/estherkang14/ice-cream-app-frontend
+- Backend: https://github.com/mjester93/ice-cream-app-backend
 - Demo Video: https://vimeo.com/460740989
 
 ## Project Details
